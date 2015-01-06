@@ -1,0 +1,64 @@
+{
+  "variables": {
+    "version": "",
+    "kernel": "",
+    "iso_url": "",
+    "iso_checksum": "",
+    "iso_checksum_type": ""
+  },
+  "builders": [{
+    "type": "virtualbox-iso",
+    "vm_name": "debian-{{user `version`}}-{{user `kernel`}}",
+    "headless": false,
+    "http_directory": "http",
+    "iso_url": "{{user `iso_url`}}",
+    "iso_checksum": "{{user `iso_checksum`}}",
+    "iso_checksum_type": "{{user `iso_checksum_type`}}",
+    "guest_os_type": "Debian_64",
+    "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
+    "virtualbox_version_file": ".vbox_version",
+    "ssh_username": "installer",
+    "ssh_password": "installer",
+    "ssh_wait_timeout": "10000s",
+    "boot_command": [
+      "<esc><wait>",
+      "install",
+      " auto",
+      " url=http://{{.HTTPIP}}:{{.HTTPPort}}/debian-wheezy-amd64/preseed-{{user `kernel`}}.cfg",
+      " country=DE",
+      " language=en",
+      " locale=en_US.UTF-8",
+      " keymap=de",
+      " hostname=wheezy",
+      " domain=local",
+      " fb=false ",
+      "<enter>"
+    ],
+    "shutdown_command": "sudo shutdown -h now",
+    "disk_size": 10000,
+    "vboxmanage": [
+      ["modifyvm", "{{.Name}}", "--memory", "512"],
+      ["modifyvm", "{{.Name}}", "--cpus", "1"]
+    ]
+  }],
+  "provisioners": [{
+    "type": "file",
+    "source": "config/debian-wheezy-amd64",
+    "destination": "/tmp/config"
+  },{
+    "type": "shell",
+    "environment_vars": [
+      "DEBIAN_FRONTEND=noninteractive"
+    ],
+    "execute_command": "{{.Vars}} sudo -E bash '{{.Path}}'",
+    "scripts": [
+      "scripts/debian-wheezy-amd64/setup.sh"
+    ]
+  }],
+  "post-processors": [{
+    "type": "vagrant",
+    "keep_input_artifact": false,
+    "compression_level": "9",
+    "output": "debian-{{user `version`}}-{{user `kernel`}}-amd64-{{.Provider}}.box"
+  }]
+}

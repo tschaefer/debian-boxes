@@ -1,0 +1,114 @@
+#!/bin/bash
+
+lookup() { jq -r ''$1' // empty' janitor.json 2>/dev/null; }
+
+n=0
+while getopts ":r:k:dhv-:" opts; do
+  case "$opts" in
+    (-)
+      case "$OPTARG" in
+        help) print_help=1; (( n += 1 )) ;;
+        version) print_version=1; (( n += 1 )) ;;
+        release=*) release=${OPTARG#*=}; (( n += 1 )) ;;
+        kernel=*) kernel=${OPTARG#*=}; (( n += 1 )) ;;
+        dry-run) dry_run=1; (( n += 1 )) ;;
+        *)
+          case ${OPTARG%=*} in
+            release)
+              echo "'--${OPTARG%=*}' missing argument"
+              exit 1
+              ;;
+          esac
+          echo "unknown option: '${OPTARG%=*}'";
+          exit 1
+          ;;
+      esac
+      ;;
+    h) print_help=1; (( n += 1 )) ;;
+    v) print_version=1; (( n += 1 )) ;;
+    r) release=$OPTARG; (( n += 1 )) ;;
+    k) kernel=$OPTARG; (( n += 1 )) ;;
+    d) dry_run=1; (( n += 1 )) ;;
+    *)
+      case ${OPTARG%=*} in
+        r)
+          echo "'-${OPTARG%=*}' missing argument"
+          exit 1
+          ;;
+      esac
+      echo "unknown option: '$OPTARG'";
+      exit 1
+      ;;
+  esac
+done
+
+if [ -n "$print_help" -o -n "$print_version" ]; then
+  if [ $n -gt 1 ]; then
+    echo "use options -h|--help, -v|--version only seperate"
+    exit 1
+  fi
+fi
+
+if [ -n "$print_help" ]; then
+  echo "
+  usage: boxer -r|--release=<version> -k|--kernel=<version> [-y|--dry-run]
+         boxer -h|--help
+         boxer -v|--version
+
+  options:
+        -h --help                   display this message
+        -v --version                display version
+
+        -r --release=<version>      set release version
+        -k --kernel=<version>       set kernel version
+        -d --dry-run                process arguments, but don't build anything
+
+  dependencies: jq, packer, virtualbox
+"
+  exit 0
+fi
+
+for p in "jq" "packer" "virtualbox"; do
+  hash $p 2>/dev/null || { echo missing dependency: $p 1>&2; exit 1; }
+done
+
+if [ -n "$print_version" ]; then
+  echo "version: 0.1"
+  exit 0
+fi
+
+if [ -z "$release" -o -z "$kernel" ]; then
+  echo "options -r|--release -k|--kernel are mandatory"
+  exit 1
+fi
+
+if [ -z "$(lookup .${release})" ]; then
+  echo "unknown release: '$release'"
+  exit 1
+fi
+
+for k in $(lookup .${release}.kernel[]); do
+  if [ "$k" == "$kernel" ]; then
+    r="ok"
+  fi
+done
+if [ -z "$r" ]; then
+  echo "unknown kernel: '$kernel'"
+  exit 1
+fi
+
+template="$(lookup .${release}.template)"
+version="$(lookup .${release}.version)"
+iso_url="$(lookup .${release}.iso_url)"
+iso_checksum="$(lookup .${release}.iso_checksum)"
+iso_checksum_type="$(lookup .${release}.iso_checksum_type)"
+
+command="packer build -var version=$version -var kernel=$kernel \
+  -var iso_url=$iso_url -var iso_checksum=$iso_checksum \
+  -var iso_checksum_type=$iso_checksum_type templates/$template"
+
+if [ -n "$dry_run" ]; then
+  echo $command
+else
+  $command
+fi
