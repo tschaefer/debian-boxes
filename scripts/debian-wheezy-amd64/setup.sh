@@ -12,6 +12,7 @@ function network() {
 
 function config() {
   cp -rf /tmp/config/etc/* /etc
+  init Q
   mv /home/installer/.vbox_version /etc/vbox_version
 }
 
