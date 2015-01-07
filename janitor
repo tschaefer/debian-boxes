@@ -51,7 +51,7 @@ fi
 
 if [ -n "$print_help" ]; then
   echo "
-  usage: janitor -r|--release=<version> -k|--kernel=<version> [-y|--dry-run]
+  usage: janitor -r|--release=<version> -k|--kernel=<version> [-d|--dry-run]
          janitor -h|--help
          janitor -v|--version
 

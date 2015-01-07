@@ -20,7 +20,7 @@ To run *janitor* following software is required:
 ```
 $ ./janitor -h
 
-  usage: janitor -r|--release=<version> -k|--kernel=<version> [-y|--dry-run]
+  usage: janitor -r|--release=<version> -k|--kernel=<version> [-d|--dry-run]
          janitor -h|--help
          janitor -v|--version
 
