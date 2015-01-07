@@ -51,9 +51,9 @@ fi
 
 if [ -n "$print_help" ]; then
   echo "
-  usage: boxer -r|--release=<version> -k|--kernel=<version> [-y|--dry-run]
-         boxer -h|--help
-         boxer -v|--version
+  usage: janitor -r|--release=<version> -k|--kernel=<version> [-y|--dry-run]
+         janitor -h|--help
+         janitor -v|--version
 
   options:
         -h --help                   display this message
