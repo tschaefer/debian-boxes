@@ -36,10 +36,10 @@ $ ./janitor -h
 
 ```
 
-You can choose the kernel version (latest stable [base] or backport [bpo]) and
-the Debian release version (stable, wheezy, v770, v760).
+You can choose the kernel version (latest stable [*base*] or backport [*bpo*])
+and the Debian release version (*stable*, *wheezy*, *v770*, *v760*).
 
-For configuration see the JSON file.
+For further information and configuration see the JSON file.
 
 ## Details
 
@@ -58,15 +58,18 @@ packages:
   * nfs-common
   * task-german
 
-The environment is prepared for english (default) and german locales.
-The timezone is set to Europe/Berlin and time is synchronized via network.
+The environment is prepared for English (default) and German locales.
+The timezone is set to *Europe/Berlin* and time is synchronized via network.
 Apt is configured to not install recommended packages and the mirror points to
-http.debian.net (main, contrib, non-free, updates, backports). The default user
-is named *installer* with password *installer* and superuser permission without
-password reentry - see [Vagrant SSH settings](https://docs.vagrantup.com/v2/vagrantfile/ssh_settings.html)
+*http.debian.net* (main, contrib, non-free, updates, backports). The default user
+is named *installer* with password *installer* and has superuser permission
+without password reentry - see [Vagrant SSH settings](https://docs.vagrantup.com/v2/vagrantfile/ssh_settings.html)
 
-Further the hostname is set to the Debian release codename (e.g. wheezy) with
+Further the hostname is set to the Debian release codename (e.g. *wheezy*) with
 domain *local* and all getty's are deactivated.
+
+The proper VirtualBox guest additions are installed, the container is
+shrinked, packed as Vagrant box and named debian-*version*-*kernel*-amd64-*provider*.box.
 
 ## License
 
