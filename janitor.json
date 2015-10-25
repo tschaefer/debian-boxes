@@ -1,42 +1,26 @@
 {
-  "stable": {
+  "oldstable": {
     "template": "debian-wheezy-amd64.json",
-    "version": "7.8.0",
+    "version": "7.9.0",
     "kernel": [ "base", "bpo" ],
-    "iso_url": "http://cdimage.debian.org/debian-cd/7.8.0/amd64/iso-cd/debian-7.8.0-amd64-netinst.iso",
-    "iso_checksum": "e63fc19d23dd614f4e2f129237ea6517858ff8cc",
+    "iso_url": "http://cdimage.debian.org/mirror/cdimage/archive/7.9.0/amd64/iso-cd/debian-7.9.0-amd64-netinst.iso",
+    "iso_checksum": "97ea6007435f83007219441b6d64ff4fbcca928c",
     "iso_checksum_type": "sha1"
   },
   "wheezy": {
     "template": "debian-wheezy-amd64.json",
-    "version": "7.8.0",
+    "version": "7.9.0",
     "kernel": [ "base", "bpo" ],
-    "iso_url": "http://cdimage.debian.org/debian-cd/7.8.0/amd64/iso-cd/debian-7.8.0-amd64-netinst.iso",
-    "iso_checksum": "e63fc19d23dd614f4e2f129237ea6517858ff8cc",
+    "iso_url": "http://cdimage.debian.org/mirror/cdimage/archive/7.9.0/amd64/iso-cd/debian-7.9.0-amd64-netinst.iso",
+    "iso_checksum": "97ea6007435f83007219441b6d64ff4fbcca928c",
     "iso_checksum_type": "sha1"
   },
-  "v780": {
+  "v790": {
     "template": "debian-wheezy-amd64.json",
-    "version": "7.8.0",
+    "version": "7.9.0",
     "kernel": [ "base", "bpo" ],
-    "iso_url": "http://cdimage.debian.org/debian-cd/7.8.0/amd64/iso-cd/debian-7.8.0-amd64-netinst.iso",
-    "iso_checksum": "e63fc19d23dd614f4e2f129237ea6517858ff8cc",
-    "iso_checksum_type": "sha1"
-  },
-  "v770": {
-    "template": "debian-wheezy-amd64.json",
-    "version": "7.7.0",
-    "kernel": [ "base", "bpo" ],
-    "iso_url": "http://cdimage.debian.org/mirror/cdimage/archive/7.7.0/amd64/iso-cd/debian-7.7.0-amd64-netinst.iso",
-    "iso_checksum": "be34b4fa4d307698ef2ac520979879d9e25a49a4",
-    "iso_checksum_type": "sha1"
-  },
-  "v760": {
-    "template": "debian-wheezy-amd64.json",
-    "version": "7.6.0",
-    "kernel": [ "base", "bpo" ],
-    "iso_url": "http://cdimage.debian.org/mirror/cdimage/archive/7.6.0/amd64/iso-cd/debian-7.6.0-amd64-netinst.iso",
-    "iso_checksum": "12301855952ce5fdc3319ed0c172f352c5223f49",
+    "iso_url": "http://cdimage.debian.org/mirror/cdimage/archive/7.9.0/amd64/iso-cd/debian-7.9.0-amd64-netinst.iso",
+    "iso_checksum": "97ea6007435f83007219441b6d64ff4fbcca928c",
     "iso_checksum_type": "sha1"
   }
 }
