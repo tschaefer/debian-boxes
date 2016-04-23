@@ -9,7 +9,7 @@
   "builders": [{
     "type": "virtualbox-iso",
     "vm_name": "debian-{{user `version`}}-{{user `kernel`}}",
-    "headless": false,
+    "headless": true,
     "http_directory": "http",
     "iso_url": "{{user `iso_url`}}",
     "iso_checksum": "{{user `iso_checksum`}}",
