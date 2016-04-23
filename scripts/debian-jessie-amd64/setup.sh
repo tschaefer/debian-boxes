@@ -12,7 +12,6 @@ function network() {
 
 function config() {
   cp -rf /tmp/config/etc/* /etc
-  init Q
   mv /home/installer/.vbox_version /etc/vbox_version
 }
 
@@ -36,6 +35,7 @@ function vboxtools() {
 }
 
 function cleanup() {
+  apt-get -y autoremove --purge
   rm -rf /tmp/*
   apt-get autoclean
   apt-get clean
