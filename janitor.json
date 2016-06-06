@@ -1,26 +1,26 @@
 {
   "stable": {
     "template": "debian-jessie-amd64.json",
-    "version": "8.4.0",
+    "version": "8.5.0",
     "kernel": [ "base", "bpo" ],
-    "iso_url": "http://cdimage.debian.org/debian-cd/8.4.0/amd64/iso-cd/debian-8.4.0-amd64-netinst.iso",
-    "iso_checksum": "92cb8946618e3ed776827e7fcb56e452d993dbf8",
+    "iso_url": "http://cdimage.debian.org/debian-cd/8.5.0/amd64/iso-cd/debian-8.5.0-amd64-netinst.iso",
+    "iso_checksum": "28a28ea5a5d49af9fb795971782944795c7f15db",
     "iso_checksum_type": "sha1"
   },
   "jessie": {
     "template": "debian-jessie-amd64.json",
-    "version": "8.4.0",
+    "version": "8.5.0",
     "kernel": [ "base", "bpo" ],
-    "iso_url": "http://cdimage.debian.org/debian-cd/8.4.0/amd64/iso-cd/debian-8.4.0-amd64-netinst.iso",
-    "iso_checksum": "92cb8946618e3ed776827e7fcb56e452d993dbf8",
+    "iso_url": "http://cdimage.debian.org/debian-cd/8.5.0/amd64/iso-cd/debian-8.5.0-amd64-netinst.iso",
+    "iso_checksum": "28a28ea5a5d49af9fb795971782944795c7f15db",
     "iso_checksum_type": "sha1"
   },
   "v820": {
     "template": "debian-jessie-amd64.json",
-    "version": "8.4.0",
+    "version": "8.5.0",
     "kernel": [ "base", "bpo" ],
-    "iso_url": "http://cdimage.debian.org/debian-cd/8.4.0/amd64/iso-cd/debian-8.4.0-amd64-netinst.iso",
-    "iso_checksum": "92cb8946618e3ed776827e7fcb56e452d993dbf8",
+    "iso_url": "http://cdimage.debian.org/debian-cd/8.5.0/amd64/iso-cd/debian-8.5.0-amd64-netinst.iso",
+    "iso_checksum": "28a28ea5a5d49af9fb795971782944795c7f15db",
     "iso_checksum_type": "sha1"
   },
   "oldstable": {
