@@ -15,7 +15,7 @@
     "iso_checksum": "28a28ea5a5d49af9fb795971782944795c7f15db",
     "iso_checksum_type": "sha1"
   },
-  "v820": {
+  "v850": {
     "template": "debian-jessie-amd64.json",
     "version": "8.5.0",
     "kernel": [ "base", "bpo" ],
@@ -39,7 +39,7 @@
     "iso_checksum": "17ff2cc34c9e90ea898a5e5c8921965801d9ad07",
     "iso_checksum_type": "sha1"
   },
-  "v790": {
+  "v7100": {
     "template": "debian-wheezy-amd64.json",
     "version": "7.10.0",
     "kernel": [ "base", "bpo" ],
